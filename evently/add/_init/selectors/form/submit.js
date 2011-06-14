@@ -1,14 +1,14 @@
-function(selector) {
-    var form = $(this);
-    var data = form.serializeObject();
-    data.created_at = new Date();
-    $$(this).app.db.saveDoc(data, {
-        success : function() {
-            form[0].reset();
-        },
-        error : function(code, msg, detail) {
-            alert('Error: '+detail);
-        }
-    });
-    selector.preventDefault();
+function(selectors) {
+  var form = $(this);
+  var doc = form.serializeObject();
+  doc.created_at = new Date();
+  $$(this).app.db.saveDoc(doc, {
+    success : function() {
+      form[0].reset();
+    },
+    error : function(code, msg, detail) {
+      alert(detail);
+    }
+  });
+  selectors.preventDefault();
 }
